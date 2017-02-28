@@ -69,12 +69,12 @@ public class TcxReader {
     }
 
     public static void main(String[] args) {
-        Path testTcx = Paths.get("/", "home", "anthony", "Downloads", "4982983017.tcx");
+        Path testTcx = Paths.get("/", "home", "anthony", "Downloads", "6294058868.tcx");
 
         TcxReader tcxReader = new TcxReader(true);
         TrainingCenterDatabaseT tcd = tcxReader.read(testTcx);
 
-        Track track = new Track(tcd.getActivities().getActivity().get(0).getLap().get(0).getTrack().get(0));
+        Track track = new Track(tcd);
 
         for(TrackPoint trackPoint : track.trackPoints) {
             System.out.println(trackPoint.toStringImperial());

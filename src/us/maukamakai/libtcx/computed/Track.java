@@ -2,6 +2,7 @@ package us.maukamakai.libtcx.computed;
 
 import com.garmin.xmlschemas.trainingcenterdatabase.v2.TrackT;
 import com.garmin.xmlschemas.trainingcenterdatabase.v2.TrackpointT;
+import com.garmin.xmlschemas.trainingcenterdatabase.v2.TrainingCenterDatabaseT;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.time.ZonedDateTime;
@@ -12,6 +13,10 @@ import java.util.Objects;
 
 public class Track {
     public final List<TrackPoint> trackPoints;
+
+    public Track(final TrainingCenterDatabaseT trainingCenterDatabaseT) {
+        this(trainingCenterDatabaseT.getActivities().getActivity().get(0).getLap().get(0).getTrack().get(0));
+    }
 
     public Track(final TrackT trackT) {
         this.trackPoints = this.computeTrackPoints(trackT);
